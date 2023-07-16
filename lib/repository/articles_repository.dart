@@ -1,4 +1,4 @@
-import 'package:notifier_practice/article.dart';
+import 'package:notifier_practice/article/article.dart';
 import 'package:notifier_practice/mode/mode_state.dart';
 
 class ArticlesRepository {

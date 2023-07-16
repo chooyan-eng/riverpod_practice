@@ -1,9 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:notifier_practice/article.dart';
+import 'package:notifier_practice/article/article.dart';
 import 'package:notifier_practice/filter/filter_word_state.dart';
 import 'package:notifier_practice/mode/mode_state.dart';
 import 'package:notifier_practice/repository/articles_repository.dart';
 
+/// [AsyncNotifierProvider] which provides all articles
 final articlesProvider = AsyncNotifierProvider<ArticlesNotifier, List<Article>>(
     ArticlesNotifier.new);
 
@@ -24,6 +25,8 @@ class ArticlesNotifier extends AsyncNotifier<List<Article>> {
   }
 }
 
+/// [FutureProvider] which watches [articlesProvider] and [filterWordState]
+/// to provide filtered articles for UI.
 final filteredArticlesProvider = FutureProvider<List<Article>>((ref) async {
   final filterWord = ref.watch(filterWordState);
   final articles = await ref.watch(articlesProvider.future);
@@ -33,6 +36,8 @@ final filteredArticlesProvider = FutureProvider<List<Article>>((ref) async {
       .toList();
 });
 
+/// [NotifierProvider] which is listening [filteredArticlesProvider]
+/// to detect and notify updates.
 final hasUpdateProvider = NotifierProvider<ArticlesHasUpdateNotifier, bool>(
     ArticlesHasUpdateNotifier.new);
 
