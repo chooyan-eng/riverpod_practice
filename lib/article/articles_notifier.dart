@@ -9,6 +9,10 @@ final articlesProvider = AsyncNotifierProvider<ArticlesNotifier, List<Article>>(
     ArticlesNotifier.new);
 
 class ArticlesNotifier extends AsyncNotifier<List<Article>> {
+  // some fields for internal logic
+  String? _someString;
+  bool _someFlag = false;
+
   @override
   Future<List<Article>> build() async {
     final mode = ref.watch(modeState);
@@ -22,6 +26,10 @@ class ArticlesNotifier extends AsyncNotifier<List<Article>> {
       ref.read(modeState),
     );
     state = AsyncValue.data(reloaded);
+  }
+
+  void someMethod() {
+    // some method maintaining state
   }
 }
 
