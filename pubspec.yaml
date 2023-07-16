@@ -1,0 +1,25 @@
+name: notifier_practice
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.3.6
+  hooks_riverpod: ^2.3.6
+  provider: ^6.0.5
+  riverpod: ^2.3.6
+  stack_trace: ^1.11.0
+  state_notifier: ^0.7.2+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
